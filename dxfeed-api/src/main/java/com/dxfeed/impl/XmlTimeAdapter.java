@@ -13,7 +13,7 @@ package com.dxfeed.impl;
 
 import com.devexperts.util.TimeFormat;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class XmlTimeAdapter extends XmlAdapter<String,Long> {
     @Override

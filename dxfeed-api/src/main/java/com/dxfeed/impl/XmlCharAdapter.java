@@ -11,7 +11,7 @@
  */
 package com.dxfeed.impl;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class XmlCharAdapter extends XmlAdapter<String, Character> {
     @Override

@@ -13,7 +13,7 @@ package com.dxfeed.impl;
 
 import com.dxfeed.event.candle.CandleSymbol;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class XmlCandleSymbolAdapter extends XmlAdapter<String, CandleSymbol> {
     @Override
