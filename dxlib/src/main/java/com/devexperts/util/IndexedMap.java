@@ -11,6 +11,8 @@
  */
 package com.devexperts.util;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
-import javax.annotation.Nonnull;
 
 /**
  * A wrapper around {@link IndexedSet} which implements {@link Map Map} interface.
@@ -488,7 +489,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
      * The collection is backed by the map, so changes to the map are reflected
      * in the collection, and vice-versa. The view supports all operations.
      */
-    @Nonnull
+    @NonNull
     @Override
     public Collection<V> values() {
         return set;
@@ -499,7 +500,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
      * so changes to the map are reflected in the set, and vice-versa.
      * The view supports all operations except operations which add new elements.
      */
-    @Nonnull
+    @NonNull
     @Override
     public Set<K> keySet() {
         if (keySet == null)
@@ -512,7 +513,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
      * is a {@link Map.Entry Map.Entry}. The set is backed by the map, so changes to the map are
      * reflected in the set, and vice-versa. The view supports all operations.
      */
-    @Nonnull
+    @NonNull
     @Override
     public Set<Map.Entry<K, V>> entrySet() {
         if (entrySet == null)
@@ -752,7 +753,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
             return set.containsKey((K) o);
         }
 
-        @Nonnull
+        @NonNull
         @Override
         public Iterator<K> iterator() {
             return set.keyIterator();
@@ -813,7 +814,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
             return set.getIndexerFunction().matchesByKey(e.getKey(), e.getValue()) && set.containsValue(e.getValue());
         }
 
-        @Nonnull
+        @NonNull
         @Override
         public Iterator<Map.Entry<K, V>> iterator() {
             return set.entryIterator();

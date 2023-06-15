@@ -808,7 +808,7 @@ public class DXFeedSubscription<E> implements Serializable, ObservableSubscripti
      *                  {@code null} if it did not present before.
      * @return {@code true} if listeners shall be notified on the change in the set of subscribed symbols.
      */
-    protected boolean shallNotifyOnSymbolUpdate(@Nonnull Object symbol, @Nullable Object oldSymbol) {
+    protected boolean shallNotifyOnSymbolUpdate(@NonNull Object symbol, @Nullable Object oldSymbol) {
         return symbol instanceof FilteredSubscriptionSymbol ? symbol != oldSymbol : oldSymbol == null;
     }
 
@@ -851,7 +851,7 @@ public class DXFeedSubscription<E> implements Serializable, ObservableSubscripti
             this.undecorate = undecorate;
         }
 
-        @Nonnull
+        @NonNull
         @Override
         public Iterator<Object> iterator() {
             return new SymbolViewIterator(undecorate, symbols.concurrentIterator());

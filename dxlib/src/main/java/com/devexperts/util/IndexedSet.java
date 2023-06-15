@@ -11,6 +11,8 @@
  */
 package com.devexperts.util;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -29,7 +31,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
-import javax.annotation.Nonnull;
+
 
 /**
  * A collection that contains no duplicate elements according to specified identification strategy.
@@ -529,7 +531,7 @@ public class IndexedSet<K, V> extends AbstractConcurrentSet<V> implements Clonea
     /**
      * Returns an iterator over the elements in this set.
      */
-    @Nonnull
+    @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public Iterator<V> iterator() {
@@ -564,7 +566,7 @@ public class IndexedSet<K, V> extends AbstractConcurrentSet<V> implements Clonea
      * Returns an array containing all of the elements in this set.
      * Obeys the general contract of the {@link Collection#toArray()} method.
      */
-    @Nonnull
+    @NonNull
     @Override
     public Object[] toArray() {
         return core.toArray(null); // Atomic volatile read.
@@ -574,7 +576,7 @@ public class IndexedSet<K, V> extends AbstractConcurrentSet<V> implements Clonea
      * Returns an array containing all of the elements in this set whose runtime type is that of the specified array.
      * Obeys the general contract of the {@link Collection#toArray(Object[])} method.
      */
-    @Nonnull
+    @NonNull
     @Override
     public <T> T[] toArray(T[] a) {
         return core.toArray(a); // Atomic volatile read.

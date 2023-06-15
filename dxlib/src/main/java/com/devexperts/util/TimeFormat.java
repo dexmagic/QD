@@ -11,6 +11,8 @@
  */
 package com.devexperts.util;
 
+import androidx.annotation.AnyThread;
+
 import com.devexperts.logging.Logging;
 
 import java.text.DateFormat;
@@ -19,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.TimeZone;
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Utility class for parsing and formatting dates and times in ISO-compatible format.
@@ -721,7 +722,7 @@ public class TimeFormat {
         }
     }
 
-    @ThreadSafe
+    @AnyThread
     static class MinuteCacheEntry {
         private final long minute;
         private final char[] template;
@@ -740,7 +741,7 @@ public class TimeFormat {
         }
     }
 
-    @ThreadSafe
+    @AnyThread
     static class CacheEntry {
         private final long key;
         private final String value;

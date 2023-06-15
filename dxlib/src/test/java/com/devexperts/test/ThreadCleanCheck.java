@@ -86,7 +86,7 @@ public class ThreadCleanCheck {
     /**
      * Returns a set of all threads.
      */
-    @Nonnull
+    @NonNull
     public static Set<Thread> getThreads() {
         Thread[] a = new Thread[Thread.activeCount()];
         int n = Thread.enumerate(a);
