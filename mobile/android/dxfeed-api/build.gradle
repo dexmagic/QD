@@ -35,10 +35,10 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
-    compileOnly files('libs/androidXmlLib-debug.aar')
-    compileOnly files('libs/jafapi-debug.aar')
-    compileOnly files('libs/jaxb-riLib-debug.aar')
-    compileOnly files('libs/jaxbapi-debug.aar')
+    compileOnly files('../../libs/androidXmlLib-debug.aar')
+    compileOnly files('../../libs/jafapi-debug.aar')
+    compileOnly files('../../libs/jaxb-riLib-debug.aar')
+    compileOnly files('../../libs/jaxbapi-debug.aar')
     implementation project(path: ':dxlib')
     implementation project(path: ':dxfeed-promise')
     testImplementation 'junit:junit:4.13.2'
