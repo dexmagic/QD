@@ -19,7 +19,7 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import javax.management.MBeanOperationInfo;
+
 
 /**
  * Description for managed type, operation, or attribute.
@@ -37,16 +37,7 @@ public @interface ManagementDescription {
      */
     String value();
 
-    /**
-     * Operation impact (one of
-     * {@link MBeanOperationInfo#INFO INFO},
-     * {@link MBeanOperationInfo#ACTION ACTION}, or
-     * {@link MBeanOperationInfo#ACTION_INFO ACTION_INFO}).
-     * {@link MBeanOperationInfo#UNKNOWN UNKNOWN} by default.
-     *
-     * @see MBeanOperationInfo
-     */
-    int impact() default MBeanOperationInfo.UNKNOWN;
+    int impact() default 0;
 
     /**
      * Descriptions of operation parameters.
