@@ -28,8 +28,10 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.TreeMap;
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.GuardedBy;
+
+import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
+
 
 /**
  * This strategy implements consistent hashing algorithm.
@@ -47,9 +49,9 @@ public class ConsistentLoadBalancer implements RMILoadBalancer {
         IndexedSet.create(RMIServiceDescriptor.INDEXER_BY_SERVICE_ID);
     private final NavigableMap<Integer, List<RMIServiceDescriptor>> ring = new TreeMap<>();
 
-    @Nonnull
+    @NonNull
     @Override
-    public synchronized Promise<BalanceResult> balance(@Nonnull RMIRequestMessage<?> request) {
+    public synchronized Promise<BalanceResult> balance(@NonNull RMIRequestMessage<?> request) {
         if (descriptors.size() == 0 || request.getTarget() != null)
             return Promise.completed(BalanceResult.route(request.getTarget()));
 
@@ -65,7 +67,7 @@ public class ConsistentLoadBalancer implements RMILoadBalancer {
     }
 
     @Override
-    public synchronized void updateServiceDescriptor(@Nonnull RMIServiceDescriptor descriptor) {
+    public synchronized void updateServiceDescriptor(@NonNull RMIServiceDescriptor descriptor) {
         if (descriptor.isAvailable())
             processAvailableDescriptor(descriptor);
         else
@@ -78,7 +80,7 @@ public class ConsistentLoadBalancer implements RMILoadBalancer {
     }
 
     @GuardedBy("this")
-    private void processAvailableDescriptor(@Nonnull RMIServiceDescriptor descriptor) {
+    private void processAvailableDescriptor(@NonNull RMIServiceDescriptor descriptor) {
         RMIServiceDescriptor existing = descriptors.put(descriptor);
         if (existing == null) {
             if (!ring.isEmpty())
@@ -96,7 +98,7 @@ public class ConsistentLoadBalancer implements RMILoadBalancer {
     }
 
     @GuardedBy("this")
-    private void processUnavailableDescriptor(@Nonnull RMIServiceDescriptor descriptor) {
+    private void processUnavailableDescriptor(@NonNull RMIServiceDescriptor descriptor) {
         if (!descriptors.remove(descriptor))
             return;
         ring.clear();

@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.logging.Logging;
 import com.devexperts.rmi.task.RMIServiceDescriptor;
 import com.devexperts.rmi.task.RMIServiceDescriptorsListener;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.concurrent.GuardedBy;
+
 
 abstract class AbstractServiceDescriptorsProcessor implements RMIServiceDescriptorsListener, Runnable {
     private final Logging log = Logging.getLogging(getClass());

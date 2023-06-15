@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.io.Marshalled;
 import com.devexperts.rmi.RMIException;
 import com.devexperts.rmi.RMIExceptionType;
@@ -33,7 +35,7 @@ import com.dxfeed.promise.Promise;
 
 import java.util.Comparator;
 import java.util.concurrent.Executor;
-import javax.annotation.concurrent.GuardedBy;
+
 
 @SuppressWarnings({"ThrowableInstanceNeverThrown"})
 public final class RMIRequestImpl<T> extends RMIRequest<T> implements RMIChannelOwner {

@@ -11,13 +11,15 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.rmi.task.RMIServiceDescriptor;
 import com.devexperts.rmi.task.RMIServiceId;
 import com.devexperts.util.IndexedSet;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.concurrent.GuardedBy;
+
 
 public class ClientDescriptorsManager {
 

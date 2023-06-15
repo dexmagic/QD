@@ -12,8 +12,8 @@
 package com.devexperts.rmi.task;
 
 import java.util.Objects;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * A decision made by a {@link RMILoadBalancer} - we either route the request somewhere or reject the request.
@@ -25,7 +25,7 @@ public final class BalanceResult {
     private final Type type;
     private final String rejectReason;
 
-    private BalanceResult(RMIServiceId tentativeTarget, @Nonnull Type type, String rejectReason) {
+    private BalanceResult(RMIServiceId tentativeTarget, @NonNull Type type, String rejectReason) {
         this.tentativeTarget = tentativeTarget;
         this.type = Objects.requireNonNull(type, "type");
         this.rejectReason = rejectReason;
@@ -39,7 +39,7 @@ public final class BalanceResult {
      * @return a decision to route the request to some target
      * @see #getTarget()
      */
-    @Nonnull
+    @NonNull
     public static BalanceResult route(@Nullable RMIServiceId tentativeTarget) {
         return new BalanceResult(tentativeTarget, Type.ROUTE, null);
     }
@@ -52,7 +52,7 @@ public final class BalanceResult {
      * @see #isReject()
      * @see #getRejectReason()
      */
-    @Nonnull
+    @NonNull
     public static BalanceResult reject(@Nullable RMIServiceId tentativeTarget, @Nullable String rejectReason) {
         return new BalanceResult(tentativeTarget, Type.REJECT,
             rejectReason == null ? "Request rejected by load balancer" : rejectReason);

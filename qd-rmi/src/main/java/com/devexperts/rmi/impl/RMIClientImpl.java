@@ -35,8 +35,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.GuardedBy;
+
+import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
+
 
 import static com.devexperts.rmi.task.RMIServiceDescriptor.createUnavailableDescriptor;
 
@@ -197,7 +199,7 @@ public class RMIClientImpl extends RMIClient {
         return services;
     }
 
-    void forEachPendingRequest(@Nonnull Consumer<RMIRequestImpl<?>> consumer) {
+    void forEachPendingRequest(@NonNull Consumer<RMIRequestImpl<?>> consumer) {
         pendingRequests.forEachRMIRequest(consumer);
     }
 

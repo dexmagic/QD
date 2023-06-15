@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.connector.proto.EndpointId;
 import com.devexperts.io.SerialClassContext;
 import com.devexperts.logging.Logging;
@@ -40,7 +42,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
-import javax.annotation.concurrent.GuardedBy;
+
 import javax.net.ssl.TrustManager;
 
 public final class RMIEndpointImpl extends RMIEndpoint {

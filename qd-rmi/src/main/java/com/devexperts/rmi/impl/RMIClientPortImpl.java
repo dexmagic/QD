@@ -25,9 +25,12 @@ import java.lang.reflect.Proxy;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.GuardedBy;
+
+import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+
 
 abstract class RMIClientPortImpl implements RMIClientPort {
 
@@ -109,7 +112,7 @@ abstract class RMIClientPortImpl implements RMIClientPort {
         return endpoint;
     }
 
-    @Nonnull
+    @NonNull
     protected final <T> RMIRequestMessage<T> createRequestMessage(RMIRequestType type, RMIOperation<T> operation,
         Object[] parameters)
     {
@@ -118,7 +121,7 @@ abstract class RMIClientPortImpl implements RMIClientPort {
             Marshalled.forObject(parameters, operation.getParametersMarshaller()), route, null);
     }
 
-    @Nonnull
+    @NonNull
     protected final <T> RMIRequestMessage<T> updateRequestMessage(RMIRequestMessage<T> message) {
         RMIRoute route = message.getRoute().append(endpoint.getEndpointId());
         return message.changeTargetRoute(message.getTarget(), route);

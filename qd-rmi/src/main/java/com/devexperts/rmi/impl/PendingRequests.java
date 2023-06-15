@@ -23,8 +23,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.ThreadSafe;
+
+import androidx.annotation.AnyThread;
+import androidx.annotation.NonNull;
+
 
 /**
  * Holds requests that cannot be sent/processed yet. There are two reasons for this: either load balancing is in
@@ -35,7 +37,7 @@ import javax.annotation.concurrent.ThreadSafe;
  * <p>
  * This class is thread-safe, however iteration operations are not atomic. See Javadoc for the methods for details.
  */
-@ThreadSafe
+@AnyThread
 class PendingRequests {
     private final IndexedSet<Long, PendingRequest> requests = SynchronizedIndexedSet.createLong(PendingRequest::getId);
 
@@ -45,7 +47,7 @@ class PendingRequests {
      * {@link #removeAllBalanced()} method is called.
      * @param pendingRequest RMI request
      */
-    void addPendingRequest(@Nonnull RMIRequestImpl<?> pendingRequest) {
+    void addPendingRequest(@NonNull RMIRequestImpl<?> pendingRequest) {
         requests.add(PendingRequest.fromRMIRequest(pendingRequest));
     }
 
@@ -58,8 +60,8 @@ class PendingRequests {
      * @param promiseCompletionAction action to be invoked when balancing completes. The action is not invoked
      *                                if the request has been dropped with {@link #dropPendingRequest(long)}
      */
-    void addBalancePromise(@Nonnull RMIRequestImpl<?> rmiRequest, @Nonnull Promise<BalanceResult> balancePromise,
-        @Nonnull BiConsumer<RMIRequestImpl<?>, Promise<BalanceResult>> promiseCompletionAction)
+    void addBalancePromise(@NonNull RMIRequestImpl<?> rmiRequest, @NonNull Promise<BalanceResult> balancePromise,
+        @NonNull BiConsumer<RMIRequestImpl<?>, Promise<BalanceResult>> promiseCompletionAction)
     {
         requests.add(PendingRequest.fromBalancePromise(rmiRequest, balancePromise));
         // We should not capture the request in whenDone handler so that even if a load balancer
@@ -87,8 +89,8 @@ class PendingRequests {
      * @param promiseCompletionAction action to be invoked when balancing completes. The action is not invoked
      *                                if the request has been dropped with {@link #dropPendingRequest(long)}
      */
-    void addBalancePromise(@Nonnull ServerRequestInfo requestInfo, @Nonnull Promise<BalanceResult> balancePromise,
-        @Nonnull BiConsumer<ServerRequestInfo, Promise<BalanceResult>> promiseCompletionAction)
+    void addBalancePromise(@NonNull ServerRequestInfo requestInfo, @NonNull Promise<BalanceResult> balancePromise,
+        @NonNull BiConsumer<ServerRequestInfo, Promise<BalanceResult>> promiseCompletionAction)
     {
         requests.add(PendingRequest.fromBalancePromise(requestInfo, balancePromise));
         long reqId = requestInfo.reqId;
@@ -133,7 +135,7 @@ class PendingRequests {
      * addition if you need atomicity.
      * @param consumer consumer
      */
-    void forEachRMIRequest(@Nonnull Consumer<RMIRequestImpl<?>> consumer) {
+    void forEachRMIRequest(@NonNull Consumer<RMIRequestImpl<?>> consumer) {
         for (Iterator<PendingRequest> it = requests.concurrentIterator(); it.hasNext();) {
             PendingRequest pendingRequest = it.next();
             if (pendingRequest.rmiRequest != null)
@@ -148,7 +150,7 @@ class PendingRequests {
      * by the consumer. Apply external locking and prevent concurrent promises addition if you need atomicity.
      * @param consumer consumer
      */
-    private void forEachBalancePromise(@Nonnull Consumer<Promise<BalanceResult>> consumer) {
+    private void forEachBalancePromise(@NonNull Consumer<Promise<BalanceResult>> consumer) {
         for (Iterator<PendingRequest> it = requests.concurrentIterator(); it.hasNext();) {
             PendingRequest pendingRequest = it.next();
             if (pendingRequest.balancePromise != null)

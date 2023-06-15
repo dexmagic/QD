@@ -11,6 +11,8 @@
  */
 package com.dxfeed.api.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.io.URLInputStream;
 import com.devexperts.qd.DataRecord;
 import com.devexperts.qd.DataScheme;
@@ -64,7 +66,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
-import javax.annotation.concurrent.GuardedBy;
+
 
 public class DXEndpointImpl extends ExtensibleDXEndpoint implements MessageConnectorListener, RMISupportingDXEndpoint {
     private static final boolean TRACE_LOG = DXEndpointImpl.class.desiredAssertionStatus();

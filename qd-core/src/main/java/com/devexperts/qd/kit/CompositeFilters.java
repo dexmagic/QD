@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd.kit;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.qd.DataRecord;
 import com.devexperts.qd.DataScheme;
 import com.devexperts.qd.QDContract;
@@ -32,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
-import javax.annotation.Nonnull;
+
 
 /**
  * {@code SubscriptionFilter} utilities that combine other filters with ',' (or) operations,
@@ -601,7 +603,7 @@ public class CompositeFilters {
             return wrapFastFilter(create(list, source), true);
         }
 
-        @Nonnull
+        @NonNull
         private SymbolSetFilter createSymbolSetFilter(QDFilter original, List<QDFilter> symbolSetCombines, SymbolSet set) {
             return new SymbolSetFilter(original.getScheme(), set, create(symbolSetCombines, null));
         }

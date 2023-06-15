@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 public class ServiceRouter<T> implements RMIObservableServiceDescriptors {
 
@@ -242,7 +242,7 @@ public class ServiceRouter<T> implements RMIObservableServiceDescriptors {
         }
 
         @Override
-        public int compareTo(@Nonnull Ref<T> o) {
+        public int compareTo(@NonNull Ref<T> o) {
             return distance - o.distance;
         }
 

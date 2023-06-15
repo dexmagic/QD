@@ -11,7 +11,6 @@
  */
 package com.devexperts.rmi.task;
 
-import java.rmi.RMISecurityManager;
 import java.util.concurrent.Callable;
 
 /**
@@ -32,9 +31,7 @@ public interface RMIContinuation<T> {
 
     /**
      * Resumes {@link RMITask} from {@link RMITaskState#SUSPENDED SUSPENDED} state.
-     * Execution thread is allocated. Inside execution thread the {@link RMITask#current() RMITask.current} is
-     * configured in and the request subject is installed via {@link RMISecurityManager}, then
-     * {@code callable.call()} is invoked and the result of invocation becomes the result of the task.
+     * Execution thread is allocated.
      *
      * @param callable {@link Callable#call() call} method is invoked
      *                  when a task starts to work again in the server-assigned execution thread.

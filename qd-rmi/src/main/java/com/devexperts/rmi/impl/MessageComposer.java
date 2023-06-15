@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.connector.proto.EndpointId;
 import com.devexperts.connector.proto.JVMId;
 import com.devexperts.io.ByteArrayOutput;
@@ -44,7 +46,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.concurrent.GuardedBy;
+
 
 /**
  * Auxiliary class that communicates that composes outgoing RMI messages and keeps composed stream state.

@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.rmi.message.RMIRequestMessage;
 import com.devexperts.rmi.task.BalanceResult;
 import com.devexperts.rmi.task.RMILoadBalancerFactory;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.concurrent.GuardedBy;
+
 
 class ClientSideServices {
 

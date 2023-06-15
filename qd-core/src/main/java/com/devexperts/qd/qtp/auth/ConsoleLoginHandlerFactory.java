@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd.qtp.auth;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.auth.AuthToken;
 import com.devexperts.qd.qtp.MessageAdapter;
 import com.devexperts.qd.qtp.MessageAdapterConnectionFactory;
@@ -23,7 +25,7 @@ import java.io.Console;
 import java.util.Scanner;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.concurrent.GuardedBy;
+
 
 @ServiceProvider
 public class ConsoleLoginHandlerFactory implements QDLoginHandlerFactory {

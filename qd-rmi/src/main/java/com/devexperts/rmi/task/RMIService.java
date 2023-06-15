@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * Provides the asynchronous execution of some operations on the {@link RMIServer}.
@@ -148,7 +148,7 @@ public abstract class RMIService<T> implements RMIObservableServiceDescriptors, 
      * <b>This method must be lock-free.</b>
      * @return descriptors of all the implementations of this service in the network. The list is unmodifiable.
      */
-    @Nonnull
+    @NonNull
     public List<RMIServiceDescriptor> getDescriptors() {
         return Collections.singletonList(RMIServiceDescriptor.createDescriptor(getOrCreateServiceId(), 0, null, null));
     }

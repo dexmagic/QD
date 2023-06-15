@@ -11,6 +11,8 @@
  */
 package com.devexperts.connector.codec.delayed;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.connector.codec.CodecConnection;
 import com.devexperts.connector.proto.ApplicationConnectionFactory;
 import com.devexperts.connector.proto.TransportConnection;
@@ -18,7 +20,6 @@ import com.devexperts.io.ChunkList;
 import com.devexperts.logging.Logging;
 
 import java.io.IOException;
-import javax.annotation.concurrent.GuardedBy;
 
 class DelayedConnection extends CodecConnection<DelayedConnectionFactory> {
 

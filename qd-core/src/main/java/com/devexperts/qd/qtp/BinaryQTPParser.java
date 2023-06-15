@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import javax.annotation.Nonnull;
+
 
 import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_DESCRIBE_PROTOCOL;
 import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_DESCRIBE_RECORDS;
@@ -41,6 +41,8 @@ import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_DESCRIBE_RESERVED;
 import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_HEARTBEAT;
 import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_PART;
 import static com.devexperts.qd.qtp.MessageConstants.MESSAGE_TEXT_FORMAT;
+
+import androidx.annotation.NonNull;
 
 /**
  * Parses QTP messages in binary format from byte stream.
@@ -488,7 +490,7 @@ public class BinaryQTPParser extends AbstractQTPParser {
         return msg.readCompactLong();
     }
 
-    @Nonnull
+    @NonNull
     protected BinaryRecordDesc[] newRecordMap(BinaryRecordDesc[] recordMap, int id) {
         int len = recordMap == null ? 0 : recordMap.length;
         int newLen = Math.max(Math.max(10, id + 1), len * 3 / 2);

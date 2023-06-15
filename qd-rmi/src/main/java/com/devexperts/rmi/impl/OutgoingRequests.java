@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.AnyThread;
+
 import com.devexperts.rmi.RMIExceptionType;
 import com.devexperts.rmi.task.RMIServiceDescriptor;
 
@@ -18,13 +20,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
-import javax.annotation.concurrent.ThreadSafe;
+
 
 /**
  * Outgoing requests.
  * This class is thread-safe.
  */
-@ThreadSafe
+@AnyThread
 class OutgoingRequests {
 
     private final ServiceFilter filter;

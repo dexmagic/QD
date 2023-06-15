@@ -11,13 +11,15 @@
  */
 package com.dxfeed.api.impl;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.qd.DataRecord;
 import com.devexperts.qd.kit.DefaultScheme;
 import com.devexperts.qd.kit.PentaCodec;
 import com.devexperts.services.ServiceProvider;
 import com.devexperts.services.Services;
 
-import javax.annotation.Nonnull;
+
 
 /**
  * DataScheme for DXFeed API that is dynamically created using registered
@@ -39,20 +41,20 @@ public class DXFeedScheme extends DefaultScheme {
         return INSTANCE;
     }
 
-    static DXFeedScheme withProperties(@Nonnull SchemeProperties schemeProperties) {
+    static DXFeedScheme withProperties(@NonNull SchemeProperties schemeProperties) {
         if (schemeProperties.equals(DEFAULT_PROPERTIES))
             return INSTANCE;
         return new DXFeedScheme(EVENT_DELEGATE_FACTORIES, schemeProperties);
     }
 
     protected DXFeedScheme(Iterable<? extends EventDelegateFactory> eventDelegateFactories,
-        @Nonnull SchemeProperties schemeProperties)
+        @NonNull SchemeProperties schemeProperties)
     {
         super(new PentaCodec(), createRecords(eventDelegateFactories, schemeProperties));
     }
 
     private static DataRecord[] createRecords(Iterable<? extends EventDelegateFactory> eventDelegateFactories,
-        @Nonnull SchemeProperties schemeProperties)
+        @NonNull SchemeProperties schemeProperties)
     {
         SchemeBuilder builder = new SchemeBuilder(schemeProperties);
         for (EventDelegateFactory factory : eventDelegateFactories)

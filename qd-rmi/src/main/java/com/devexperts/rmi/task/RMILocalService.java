@@ -24,7 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * Provides the asynchronous execution of some operations on the {@link RMIServer}
@@ -54,7 +54,7 @@ public abstract class RMILocalService<T> extends RMIService<T> {
             getOrCreateServiceId(), 0, null, properties));
     }
 
-    @Nonnull
+    @NonNull
     @Override
     public List<RMIServiceDescriptor> getDescriptors() {
         return descriptors;

@@ -11,13 +11,15 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.AnyThread;
+
 import com.devexperts.rmi.task.RMIChannelType;
 import com.devexperts.util.IndexedSet;
 
 import java.util.EnumMap;
-import javax.annotation.concurrent.ThreadSafe;
 
-@ThreadSafe
+
+@AnyThread
 class ChannelsManager {
 
     private final EnumMap<RMIChannelType, IndexedSet<Long, RMIChannelImpl>> channels =

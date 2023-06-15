@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd.kit;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.qd.DataRecord;
 import com.devexperts.qd.DataScheme;
 import com.devexperts.qd.QDContract;
@@ -25,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nonnull;
 
 /**
  * {@code SubscriptionFilter} that understands a simple GLOB-like grammar
@@ -321,7 +322,7 @@ public final class PatternFilter extends QDFilter {
         return filter;
     }
 
-    @Nonnull
+    @NonNull
     private String negateName(String name) {
         return negated ? name.substring(1) : ("!" + name);
     }

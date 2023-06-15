@@ -35,7 +35,7 @@ import com.devexperts.util.TypedMap;
 
 import java.io.IOException;
 import java.util.EnumSet;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * <code>RMIMessageAdapter</code> adapts {@link RMIConnection} to message API.
@@ -131,7 +131,7 @@ class RMIMessageAdapter extends MessageAdapter implements MasterMessageAdapter {
     }
 
     @Override
-    public void setConnectionVariables(@Nonnull TypedMap connectionVariables) {
+    public void setConnectionVariables(@NonNull TypedMap connectionVariables) {
         super.setConnectionVariables(connectionVariables);
         if (attachedAdapter != null)
             attachedAdapter.setConnectionVariables(connectionVariables);

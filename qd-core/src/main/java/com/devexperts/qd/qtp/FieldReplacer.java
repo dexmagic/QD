@@ -12,13 +12,14 @@
 package com.devexperts.qd.qtp;
 
 
+import androidx.annotation.Nullable;
+
 import com.devexperts.qd.DataRecord;
 import com.devexperts.qd.DataScheme;
 import com.devexperts.qd.ng.RecordCursor;
 import com.devexperts.services.Service;
 
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
 /**
  * This interface allows to update fields in data read through {@link AbstractQTPParser QTP parser}.

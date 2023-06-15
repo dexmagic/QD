@@ -56,7 +56,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
-import javax.annotation.Nonnull;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -609,7 +609,7 @@ public class HistorySnapshotMTStressTest {
         fail(msg);
     }
 
-    @Nonnull
+    @NonNull
     private static String withFlagsStr(int eventFlags) {
         return (eventFlags == 0 ? "" : " with " + EventFlag.formatEventFlags(eventFlags, MessageType.HISTORY_DATA)) +
             ((eventFlags & TX_PENDING) == 0 ? " (txEnd)" : "");
@@ -660,7 +660,7 @@ public class HistorySnapshotMTStressTest {
         }
 
         @Override
-        public int compareTo(@Nonnull DataItem o) {
+        public int compareTo(@NonNull DataItem o) {
             return Long.compare(o.time, time);
         }
 

@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.AnyThread;
+
 import com.devexperts.rmi.RMIExceptionType;
 import com.devexperts.util.IndexedSet;
 import com.devexperts.util.IndexerFunction;
@@ -19,9 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.concurrent.ThreadSafe;
 
-@ThreadSafe
+
+@AnyThread
 class SentRequests {
 
     private final IndexedSet<Long, RMIRequestImpl<?>> channelRequests = IndexedSet.createLong((IndexerFunction.LongKey<RMIRequestImpl<?>>) RMIRequestImpl::getId);

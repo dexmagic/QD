@@ -27,7 +27,6 @@ import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.concurrent.Executor;
-import javax.annotation.Nonnull;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
@@ -36,13 +35,15 @@ import javax.net.ssl.TrustManagerFactory;
 
 import static com.devexperts.util.SystemProperties.getIntProperty;
 
+import androidx.annotation.NonNull;
+
 public class SSLConnectionFactory extends CodecConnectionFactory {
 
     private static final ExecutorProvider DEFAULT_EXECUTOR_PROVIDER =
         createExecutorProvider(getIntProperty("com.devexperts.qd.qtp.ssl.executorThreadsNumber",
             Runtime.getRuntime().availableProcessors()));
 
-    @Nonnull
+    @NonNull
     private static ExecutorProvider createExecutorProvider(int nThreads) {
         return new ExecutorProvider(nThreads, "SSLTasksExecutor", Logging.getLogging(SSLConnection.class));
     }

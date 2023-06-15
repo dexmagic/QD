@@ -17,68 +17,17 @@ import com.devexperts.services.Services;
 import com.devexperts.util.LogUtil;
 import com.devexperts.util.SystemProperties;
 
-import java.lang.management.ManagementFactory;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-
 /**
  * This class represents a fatal and unrecoverable error in the QDS core implementation.
  */
 public class FatalError extends Error {
-    private static final String SURVIVE_PROPERTY = FatalError.class.getName() + ".survive";
-    private static final String DUMP_PROPERTY = FatalError.class.getName() + ".dump";
-    private static final String HPROF_PROPERTY = FatalError.class.getName() + ".hprof";
-
-    private static final boolean SURVIVE = SystemProperties.getBooleanProperty(SURVIVE_PROPERTY, false);
-    private static final String DUMP = SystemProperties.getProperty(DUMP_PROPERTY, "QDFatalError.dump");
-    private static final String HPROF = SystemProperties.getProperty(HPROF_PROPERTY, "");
-
-    private static final String HOTSPOT_DIAGNOSTIC = "com.sun.management:type=HotSpotDiagnostic";
 
     /**
-     * This method returns new {@code FatalError} with the corresponding message when
-     * {@link #SURVIVE_PROPERTY} system property is set; by default, this method
-     * terminates JVM with {@link System#exit} method.
+     * This method returns new {@code FatalError} with the corresponding message.
+     * Does not terminate on Android.
      */
     static FatalError fatal(Object owner, String message) {
-        FatalError fatal = new FatalError(message);
-        if (!SURVIVE)
-            dumpAndDie(owner, fatal);
-        return fatal;
-    }
-
-    private static void dumpAndDie(Object owner, FatalError fatal) {
-        QDLog.log.error("FATAL ERROR. Recovery from this error is unlikely. This process will be terminated.\n" +
-            "To avoid termination and to continue execution despite fatal errors, use the following JVM argument:\n" +
-            "\"-D" + SURVIVE_PROPERTY + "\"", fatal);
-        if (DUMP.length() > 0)
-            makeDump(DUMP, owner, fatal);
-        if (HPROF.length() > 0)
-            makeHProf(HPROF);
-        QDLog.log.info("EXIT");
-        System.exit(1);
-    }
-
-    private static void makeDump(String file, Object owner, FatalError fatal) {
-        DebugDump dump = Services.createService(DebugDump.class, null, null);
-        if (dump != null)
-            try {
-                dump.makeDump(file, owner, fatal);
-            } catch (Throwable t) {
-                QDLog.log.error("Failed to dump to " + LogUtil.hideCredentials(file), t);
-            }
-    }
-
-    private static void makeHProf(String file) {
-        QDLog.log.info("Dumping all heap memory in HPROF format to " + LogUtil.hideCredentials(file));
-        try {
-            MBeanServer server = ManagementFactory.getPlatformMBeanServer();
-            server.invoke(new ObjectName(HOTSPOT_DIAGNOSTIC), "dumpHeap",
-                new Object[] { file, true },
-                new String[] { "java.lang.String", "boolean" });
-        } catch (Throwable t) {
-            QDLog.log.error("Failed to dump to " + LogUtil.hideCredentials(file), t);
-        }
+        return new FatalError(message);
     }
 
     private FatalError(String message) {

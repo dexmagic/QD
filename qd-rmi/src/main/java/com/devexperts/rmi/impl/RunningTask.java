@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.AnyThread;
+
 import com.devexperts.rmi.RMIExceptionType;
 import com.devexperts.rmi.task.RMIChannelType;
 import com.devexperts.util.IndexedSet;
@@ -20,9 +22,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.concurrent.ThreadSafe;
 
-@ThreadSafe
+
+@AnyThread
 class RunningTask {
     private final IndexedSet<Long, RMITaskImpl<?>> serverChannelTasks = IndexedSet.createLong(RMITaskImpl.TASK_INDEXER_BY_ID);
     private final EnumMap<RMIChannelType,  Map<Long, IndexedSet<Long, RMITaskImpl<?>>>> mapNestedTask =

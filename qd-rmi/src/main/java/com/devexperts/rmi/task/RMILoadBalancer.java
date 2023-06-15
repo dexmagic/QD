@@ -16,7 +16,7 @@ import com.devexperts.rmi.RMIRequest;
 import com.devexperts.rmi.message.RMIRequestMessage;
 import com.dxfeed.promise.Promise;
 
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * <h2>Overview</h2>
@@ -81,8 +81,8 @@ public interface RMILoadBalancer extends AutoCloseable {
      * (including {@link Promise#cancel() cancellation}) the request will be rejected.
      * If the balancer returns {@code null} the request is also rejected.
      */
-    @Nonnull
-    public Promise<BalanceResult> balance(@Nonnull RMIRequestMessage<?> request);
+    @NonNull
+    public Promise<BalanceResult> balance(@NonNull RMIRequestMessage<?> request);
 
     /**
      * This method is invoked by QD RMI when a service appears, disappears or changes its properties such as
@@ -90,7 +90,7 @@ public interface RMILoadBalancer extends AutoCloseable {
      * Use {@link RMIServiceDescriptor#isAvailable()} to find out if the service is available or not.
      * @param descriptor the service descriptor
      */
-    public void updateServiceDescriptor(@Nonnull RMIServiceDescriptor descriptor);
+    public void updateServiceDescriptor(@NonNull RMIServiceDescriptor descriptor);
 
     /**
      * This method is invoked when this balancer is closed and will no longer be used by QD RMI. The balancer is

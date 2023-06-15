@@ -35,8 +35,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executor;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class DXPublisherImpl extends DXPublisher {
     private final DXEndpointImpl endpoint;
@@ -182,7 +183,7 @@ public class DXPublisherImpl extends DXPublisher {
         }
 
         @Override
-        protected boolean shallNotifyOnSymbolUpdate(@Nonnull Object symbol, @Nullable Object oldSymbol) {
+        protected boolean shallNotifyOnSymbolUpdate(@NonNull Object symbol, @Nullable Object oldSymbol) {
             return true;
         }
     }

@@ -17,7 +17,7 @@ import com.devexperts.rmi.message.RMIResponseType;
 import com.devexperts.rmi.task.RMIChannelType;
 
 import java.io.IOException;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 enum RMIMessageKind {
     /*
@@ -55,7 +55,7 @@ enum RMIMessageKind {
 
     }
 
-    @Nonnull
+    @NonNull
     public static RMIMessageKind readFromRequest(BufferedInput in) throws IOException {
         int id = in.readCompactInt();
         RMIMessageKind kind = getById(id);

@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.qd.kit.CompositeFilters;
 import com.devexperts.qd.kit.NotFilter;
 import com.devexperts.qd.ng.RecordCursor;
@@ -20,7 +22,6 @@ import com.devexperts.qd.util.SymbolSet;
 
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.annotation.concurrent.GuardedBy;
 
 /**
  * Filter for QD data and subscription. This class subsumes {@link SubscriptionFilter} and should be

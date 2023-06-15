@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 class RMIClientService extends ForwardService {
 
@@ -90,7 +90,7 @@ class RMIClientService extends ForwardService {
             }
     }
 
-    @Nonnull
+    @NonNull
     @Override
     public List<RMIServiceDescriptor> getDescriptors() {
         // Note: we must use concurrent iterator to get a snapshot of descriptors (that are being modified),

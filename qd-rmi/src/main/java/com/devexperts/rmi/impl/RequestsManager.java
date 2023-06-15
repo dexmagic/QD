@@ -15,7 +15,7 @@ import com.devexperts.logging.Logging;
 import com.devexperts.rmi.task.RMIServiceDescriptor;
 
 import java.util.List;
-import javax.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * The client side of {@link RMIConnection}.

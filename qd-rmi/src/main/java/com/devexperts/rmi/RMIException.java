@@ -11,7 +11,7 @@
  */
 package com.devexperts.rmi;
 
-import java.rmi.RemoteException;
+import android.os.RemoteException;
 
 /**
  * An exception that occurs during request execution.
@@ -25,7 +25,7 @@ import java.rmi.RemoteException;
  *
  * @see RMIExceptionType
  */
-public final class RMIException extends RemoteException {
+public final class RMIException extends RuntimeException {
     private static final long serialVersionUID = 0;
 
     private final RMIExceptionType type;

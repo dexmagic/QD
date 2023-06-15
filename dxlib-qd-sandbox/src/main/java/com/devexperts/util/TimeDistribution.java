@@ -104,51 +104,10 @@ public class TimeDistribution {
         counts = new long[p.nTotal];
     }
 
-    /**
-     * Creates time distribution as a copy of {@code other} distribution.
-     */
-    public TimeDistribution(TimeDistribution other) {
-        this(other.p);
-        copyFrom(other);
-    }
 
-    /**
-     * Creates time distribution as a difference between {@code cur} and {@code old} distributions.
-     */
-    public TimeDistribution(TimeDistribution cur, TimeDistribution old) {
-        this(cur.p);
-        if (cur.p != old.p)
-            throw new IllegalArgumentException("Different precision: " + cur.p + " and " + old.p);
-        copyFromDiff(cur, old);
-    }
 
-    /**
-     * Copies {@code other} distribution into this one.
-     */
-    public void copyFrom(TimeDistribution other) {
-        for (int i = 0; i < p.nTotal; i++)
-            AtomicArrays.INSTANCE.setVolatileLong(counts, i,
-                AtomicArrays.INSTANCE.getVolatileLong(other.counts, i));
-    }
 
-    /**
-     * Copies a difference between {@code cur} and {@code old} distributions into this one.
-     */
-    public void copyFromDiff(TimeDistribution cur, TimeDistribution old) {
-        for (int i = 0; i < p.nTotal; i++)
-            AtomicArrays.INSTANCE.setVolatileLong(counts, i,
-                AtomicArrays.INSTANCE.getVolatileLong(cur.counts, i) -
-                AtomicArrays.INSTANCE.getVolatileLong(old.counts, i));
-    }
 
-    /**
-     * Adds measurements from other time distribution to this one.
-     */
-    public void add(TimeDistribution other) {
-        for (int i = 0; i < p.nTotal; i++)
-            AtomicArrays.INSTANCE.addAndGetLong(counts, i,
-                AtomicArrays.INSTANCE.getVolatileLong(other.counts, i));
-    }
 
     /**
      * Returns a total number of time intervals represented in this distribution.

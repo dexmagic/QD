@@ -21,7 +21,7 @@ import com.dxfeed.promise.Promise;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 // Guarded by ClientSideService or ServerSideServices
 class LoadBalancers {
@@ -33,7 +33,7 @@ class LoadBalancers {
         this.factories = rmiLoadBalancerFactories;
     }
 
-    @Nonnull
+    @NonNull
     Promise<BalanceResult> balance(RMIRequestMessage<?> message) {
         if (closed) {
             // This should never happen
@@ -59,7 +59,7 @@ class LoadBalancers {
         }
     }
 
-    @Nonnull
+    @NonNull
     private RMILoadBalancer getBalancer(String serviceName) {
         RMILoadBalancer loadBalancer = loadBalancers.get(serviceName);
         if (loadBalancer == null) {

@@ -17,7 +17,7 @@ import com.devexperts.rmi.message.RMIRequestType;
 import com.devexperts.rmi.task.BalanceResult;
 import com.dxfeed.promise.Promise;
 
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 class RMILog {
     private RMILog() {} // utility class, do not create
@@ -44,7 +44,7 @@ class RMILog {
             "}";
     }
 
-    static void logBalancingCompletion(@Nonnull Object details, @Nonnull Promise<BalanceResult> balancePromise) {
+    static void logBalancingCompletion(@NonNull Object details, @NonNull Promise<BalanceResult> balancePromise) {
         if (RMIEndpointImpl.RMI_TRACE_LOG)
             log.trace("Balance result for request '" + details + " is " +
                 (balancePromise.hasResult() ? balancePromise.getResult() : balancePromise.getException()));

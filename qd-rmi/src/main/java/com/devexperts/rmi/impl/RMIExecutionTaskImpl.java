@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.rmi.RMIEndpoint;
 import com.devexperts.rmi.RMIExceptionType;
 import com.devexperts.rmi.RMIExecutionTask;
@@ -24,7 +26,7 @@ import com.devexperts.util.TypedMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
-import javax.annotation.concurrent.GuardedBy;
+
 
 /**
  * A task that is submitted to the endpoint executor on the server side

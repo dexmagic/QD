@@ -58,7 +58,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-import javax.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class DXFeedImpl extends DXFeed {
     private static boolean TRACE_LOG = DXFeedImpl.class.desiredAssertionStatus();

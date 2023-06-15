@@ -11,6 +11,10 @@
  */
 package com.devexperts.qd.qtp;
 
+import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.devexperts.auth.AuthSession;
 import com.devexperts.auth.AuthToken;
 import com.devexperts.connector.proto.Configurable;
@@ -39,9 +43,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.GuardedBy;
 
 /**
  * The <code>MessageAdapter</code> is a basic adapter of some entity to message API.
@@ -165,11 +166,11 @@ public abstract class MessageAdapter extends MessageConsumerAdapter implements M
         protected final QDStream stream;
         protected final QDHistory history;
 
-        @Nonnull
+        @NonNull
         @GuardedBy("this")
         protected QDFilter filter;
 
-        @Nonnull
+        @NonNull
         private final QDFilter initialFilter;
 
         /**
@@ -283,7 +284,8 @@ public abstract class MessageAdapter extends MessageConsumerAdapter implements M
     protected volatile CloseListener closeListener;
     protected volatile MessageListener messageListener;
 
-    @Nullable private TypedMap connectionVariables;
+    @Nullable
+    private TypedMap connectionVariables;
     protected EndpointId remoteEndpointId;
 
     private ProtocolOption.Set remoteOptSet = ProtocolOption.EMPTY_SET; // options supported by remote side
@@ -397,7 +399,7 @@ public abstract class MessageAdapter extends MessageConsumerAdapter implements M
      * Sets per-connection variables for this message adapter.
      * This method may be invoked only once during a life-time of MessageAdapter.
      */
-    public synchronized void setConnectionVariables(@Nonnull TypedMap connectionVariables) {
+    public synchronized void setConnectionVariables(@NonNull TypedMap connectionVariables) {
         if (this.connectionVariables != null)
             throw new IllegalStateException("Connection variables were already set");
         this.connectionVariables = connectionVariables;

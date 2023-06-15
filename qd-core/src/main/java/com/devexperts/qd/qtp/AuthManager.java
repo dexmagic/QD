@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd.qtp;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.auth.AuthSession;
 import com.devexperts.auth.AuthToken;
 import com.devexperts.auth.SessionCloseListener;
@@ -26,7 +28,6 @@ import com.dxfeed.promise.PromiseHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.concurrent.GuardedBy;
 
 class AuthManager implements PromiseHandler<AuthSession> {
 

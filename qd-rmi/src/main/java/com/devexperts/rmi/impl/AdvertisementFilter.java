@@ -14,7 +14,7 @@ package com.devexperts.rmi.impl;
 import com.devexperts.util.InvalidFormatException;
 
 import java.util.Objects;
-import javax.annotation.Nonnull;
+import androidx.annotation.NonNull;
 
 /**
  * A connection-level filter that limits service advertisement messages sent over this connection.
@@ -46,7 +46,7 @@ public final class AdvertisementFilter {
      * @throws IllegalArgumentException filter string is null or empty
      * @throws InvalidFormatException filter string could not be parsed
      */
-    @Nonnull
+    @NonNull
     public static AdvertisementFilter valueOf(String filter) {
         Objects.requireNonNull(filter, "filter");
         if (filter.trim().isEmpty()) {

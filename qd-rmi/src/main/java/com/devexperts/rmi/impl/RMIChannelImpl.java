@@ -11,6 +11,8 @@
  */
 package com.devexperts.rmi.impl;
 
+import androidx.annotation.GuardedBy;
+
 import com.devexperts.io.Marshalled;
 import com.devexperts.rmi.RMIExceptionType;
 import com.devexperts.rmi.RMIOperation;
@@ -30,7 +32,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
-import javax.annotation.concurrent.GuardedBy;
+
 
 class RMIChannelImpl extends RMIClientPortImpl implements RMIChannel {
     static final IndexerFunction.LongKey<RMIChannelImpl> CHANNEL_INDEXER_BY_REQUEST_ID = value -> value.channelId;

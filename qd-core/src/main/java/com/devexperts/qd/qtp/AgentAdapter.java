@@ -11,6 +11,8 @@
  */
 package com.devexperts.qd.qtp;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.auth.AuthSession;
 import com.devexperts.connector.proto.Configurable;
 import com.devexperts.qd.DataScheme;
@@ -48,7 +50,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Executor;
-import javax.annotation.Nonnull;
+
 
 /**
  * The <code>AgentAdapter</code> adapts agent side of QD to message API.
@@ -177,7 +179,7 @@ public class AgentAdapter extends MessageAdapter {
             rebuildChannels();
         }
 
-        @Nonnull
+        @NonNull
         public synchronized TimePeriod getSubscriptionKeepAlive() {
             return subscriptionKeepAlive;
         }
@@ -201,7 +203,7 @@ public class AgentAdapter extends MessageAdapter {
             return subscriptionExecutor;
         }
 
-        @Nonnull
+        @NonNull
         AgentAdapterChannels getAgentAdapterChannels() {
             AgentAdapterChannels channels;
             synchronized (this) {

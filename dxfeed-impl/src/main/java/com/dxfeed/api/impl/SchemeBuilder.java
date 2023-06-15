@@ -11,6 +11,8 @@
  */
 package com.dxfeed.api.impl;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.qd.DataIntField;
 import com.devexperts.qd.DataObjField;
 import com.devexperts.qd.DataRecord;
@@ -21,7 +23,7 @@ import com.devexperts.qd.kit.VoidIntField;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nonnull;
+
 
 /**
  * This class is used to add fields to QD scheme.
@@ -29,10 +31,10 @@ import javax.annotation.Nonnull;
 public class SchemeBuilder {
     private final Map<String, RecordInfo> records = new LinkedHashMap<>();
 
-    @Nonnull
+    @NonNull
     private final SchemeProperties schemeProperties;
 
-    public SchemeBuilder(@Nonnull SchemeProperties schemeProperties) {
+    public SchemeBuilder(@NonNull SchemeProperties schemeProperties) {
         this.schemeProperties = Objects.requireNonNull(schemeProperties);
     }
 
