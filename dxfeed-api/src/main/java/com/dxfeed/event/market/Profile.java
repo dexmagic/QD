@@ -16,9 +16,9 @@ import com.devexperts.util.TimeFormat;
 import com.devexperts.util.WideDecimal;
 import com.dxfeed.event.LastingEvent;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Profile information snapshot that contains security instrument description.

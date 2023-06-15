@@ -11,7 +11,7 @@
  */
 package com.dxfeed.event.market;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * Trade event is a snapshot of the price and size of the last trade during regular trading hours

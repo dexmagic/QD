@@ -53,6 +53,7 @@ public class Services {
      * This happens once per JVM, regardless of the number of calls to this method.
      * @deprecated No replacement.
      */
+    @Deprecated
     public static synchronized void startup() {
         if (!startupsStarted) {
             startupsStarted = true;

@@ -17,8 +17,8 @@ import com.dxfeed.model.AbstractIndexedEventModel;
 import com.dxfeed.model.market.OrderBookModel;
 
 import java.util.Collection;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Order event is a snapshot for a full available market depth for a symbol.

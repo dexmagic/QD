@@ -188,6 +188,7 @@ public final class Marshalled<T> {
      * @throws MarshallingException if object cannot be deserialized from its byte array
      * @deprecated use {@link #getObject()}
      */
+    @Deprecated
     public T getObject(ClassLoader cl) {
         T object = this.object;
         if (object != UNDEFINED)

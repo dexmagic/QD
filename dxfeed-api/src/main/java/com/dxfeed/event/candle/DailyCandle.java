@@ -11,7 +11,7 @@
  */
 package com.dxfeed.event.candle;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * In previous versions this class has represented candle with an additional properties that are collected for

@@ -15,8 +15,8 @@ import com.devexperts.util.DayUtil;
 import com.devexperts.util.TimeFormat;
 import com.dxfeed.event.LastingEvent;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Summary information snapshot about the trading session including session highs, lows, etc.

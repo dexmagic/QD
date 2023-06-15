@@ -487,6 +487,7 @@ public class IndexedSet<K, V> extends AbstractConcurrentSet<V> implements Clonea
      * @deprecated Use {@link #containsValue} to be explicit about type and intent.
      */
     @Override
+    @Deprecated
     @SuppressWarnings("unchecked")
     public boolean contains(Object value) {
         return getByValue((V) value) != null;

@@ -18,6 +18,7 @@ package com.devexperts.services;
  * @deprecated No replacement
  */
 @Service
+@Deprecated
 public interface StartupService {
     public void start();
 }

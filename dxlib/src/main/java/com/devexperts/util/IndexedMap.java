@@ -546,6 +546,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
      * @deprecated Use {@link #getByKey} to be explicit about type and intent.
      */
     @Override
+    @Deprecated
     @SuppressWarnings("unchecked")
     public V get(Object key) {
         return set.getByKey((K) key);
@@ -634,6 +635,7 @@ public class IndexedMap<K, V> implements Map<K, V>, Cloneable, Serializable {
      * @deprecated Use {@link #removeKey} to be explicit about type and intent.
      */
     @Override
+    @Deprecated
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
         return set.removeKey((K) key);

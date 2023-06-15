@@ -13,7 +13,7 @@ package com.dxfeed.event.market;
 
 import com.dxfeed.event.EventType;
 
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Abstract base class for all market events. All market events are plain java objects that

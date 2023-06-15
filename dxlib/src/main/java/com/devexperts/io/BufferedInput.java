@@ -700,6 +700,7 @@ public abstract class BufferedInput extends InputStream implements ObjectInput {
      *             Use {@link #mark() mark} and {@link #unmark() unmark} methods instead.
      */
     @Override
+    @Deprecated
     public final void mark(int readLimit) {
         mark((long) readLimit);
     }
@@ -721,6 +722,7 @@ public abstract class BufferedInput extends InputStream implements ObjectInput {
      *             all implementations of {@code BufferedInput}.
      *             Use {@link #mark() mark} and {@link #unmark() unmark} methods instead.
      */
+    @Deprecated
     public final void mark(long readLimit) {
         if (readLimit >= 0)
             mark();

@@ -15,8 +15,8 @@ import com.dxfeed.api.DXFeed;
 import com.dxfeed.api.DXFeedSubscription;
 import com.dxfeed.event.LastingEvent;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 /**
  * TradeETH event is a snapshot of the price and size of the last trade during

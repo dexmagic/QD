@@ -16,3 +16,4 @@ rootProject.name = "DxFeed"
 include ':app'
 include ':dxfeed-api'
 include ':dxlib'
+include ':dxfeed-promise'

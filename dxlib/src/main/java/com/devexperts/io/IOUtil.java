@@ -402,6 +402,7 @@ public class IOUtil {
      *
      * @deprecated
      */
+    @Deprecated
     public static String readCharArrayString(DataInput in) throws IOException {
         char[] chars = readCharArray(in);
         return chars == null ? null : new String(chars);

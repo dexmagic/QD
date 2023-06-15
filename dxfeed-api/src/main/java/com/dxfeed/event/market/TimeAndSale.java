@@ -22,10 +22,10 @@ import com.dxfeed.event.impl.TimeNanosUtil;
 import com.dxfeed.model.AbstractIndexedEventModel;
 import com.dxfeed.model.TimeSeriesEventModel;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Time and Sale represents a trade or other market event with price, like market open/close price, etc.

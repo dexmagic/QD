@@ -34,6 +34,7 @@ public class ByteArrayInput extends BufferedInput {
      * it is extended in some legacy classes. It is always invoked with a length of 1.
      * Override {@link #readData()} instead.
      */
+    @Deprecated
     protected int readData(int length) throws IOException {
         checkEOB(); // throws exception if not all data was read
         return -1;
