@@ -24,7 +24,6 @@ import com.dxfeed.event.market.OrderBase;
 import com.dxfeed.event.market.OrderBaseDelegateImpl;
 import com.dxfeed.event.market.TradeBase;
 
-import java.sql.Types;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
