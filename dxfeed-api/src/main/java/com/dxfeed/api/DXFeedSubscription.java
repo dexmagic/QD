@@ -11,6 +11,9 @@
  */
 package com.dxfeed.api;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.devexperts.io.IOUtil;
 import com.devexperts.util.IndexedSet;
 import com.devexperts.util.IndexerFunction;
@@ -44,8 +47,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+
 
 /**
  * Subscription for a set of symbols and event types.
