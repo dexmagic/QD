@@ -11,6 +11,8 @@
  */
 package com.devexperts.auth;
 
+import androidx.annotation.NonNull;
+
 import com.devexperts.util.Base64;
 import com.devexperts.util.InvalidFormatException;
 
@@ -19,7 +21,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
-import javax.annotation.Nonnull;
+
 
 
 /**
@@ -118,11 +120,11 @@ public class AuthToken implements Serializable {
     private transient String value;
     private String string;
 
-    private AuthToken(@Nonnull String string) {
+    private AuthToken(@NonNull String string) {
         this.string = string;
     }
 
-    private AuthToken(@Nonnull String scheme, @Nonnull String user, @Nonnull String password) {
+    private AuthToken(@NonNull String scheme, @NonNull String user, @NonNull String password) {
         this.scheme = scheme;
         this.user = user;
         this.password = password;
@@ -130,7 +132,7 @@ public class AuthToken implements Serializable {
         this.string = scheme + " " + value;
     }
 
-    private AuthToken(@Nonnull String scheme, @Nonnull String value) {
+    private AuthToken(@NonNull String scheme, @NonNull String value) {
         this.scheme = scheme;
         this.value = value;
         this.string = scheme + " " + value;
