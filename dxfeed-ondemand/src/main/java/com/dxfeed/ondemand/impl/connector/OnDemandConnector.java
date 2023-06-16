@@ -26,20 +26,14 @@ import com.dxfeed.ondemand.impl.MarketDataReplay;
 import com.dxfeed.ondemand.impl.MarketDataToken;
 
 import java.util.Date;
-import javax.management.AttributeChangeNotification;
-import javax.management.ListenerNotFoundException;
-import javax.management.MBeanNotificationInfo;
-import javax.management.NotificationBroadcaster;
-import javax.management.NotificationBroadcasterSupport;
-import javax.management.NotificationFilter;
-import javax.management.NotificationListener;
+
 
 @MessageConnectorSummary(
     info = "On-demand historical data replay.",
     addressFormat = "ondemand:<address>"
 )
 public class OnDemandConnector extends AbstractMessageConnector
-    implements OnDemandConnectorMBean, NotificationBroadcaster, OnDemandConnectorMarker
+    implements OnDemandConnectorMBean, OnDemandConnectorMarker
 {
     private final String address;
     private final ReconnectHelper reconnectHelper;
@@ -50,10 +44,6 @@ public class OnDemandConnector extends AbstractMessageConnector
     private double speed = 1;
 
     private volatile TimePeriod tickPeriod = TimePeriod.valueOf(20); // tick at 50 fps by default
-
-    // JMX notifications
-    private final NotificationBroadcasterSupport broadcaster = new NotificationBroadcasterSupport();
-    private long notificationSequence = 0; // sequence number for notificationSequence
 
     public OnDemandConnector(ApplicationConnectionFactory factory, String address) {
         super(factory);
@@ -173,15 +163,10 @@ public class OnDemandConnector extends AbstractMessageConnector
 
     void updateTime(Date newTime) {
         Date oldTime;
-        long sequence;
         synchronized (this) {
             oldTime = this.time;
             this.time = newTime;
-            sequence = ++notificationSequence;
         }
-        broadcaster.sendNotification(new AttributeChangeNotification(
-            this, sequence, System.currentTimeMillis(),
-            "Time changed", "time", Date.class.getName(), oldTime, newTime));
     }
 
     @Override
@@ -197,26 +182,6 @@ public class OnDemandConnector extends AbstractMessageConnector
             handler.setSpeed(speed);
     }
 
-    @Override
-    public void addNotificationListener(NotificationListener listener, NotificationFilter filter, Object handback) {
-        broadcaster.addNotificationListener(listener, filter, handback);
-    }
-
-    @Override
-    public void removeNotificationListener(NotificationListener listener) throws ListenerNotFoundException {
-        broadcaster.removeNotificationListener(listener);
-    }
-
-    @Override
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        return new MBeanNotificationInfo[] {
-            new MBeanNotificationInfo(
-                new String[] { AttributeChangeNotification.ATTRIBUTE_CHANGE },
-                AttributeChangeNotification.class.getName(),
-                "Attribute change notification"
-            )
-        };
-    }
 
     public void startImmediately() {
         reconnectHelper.reset();

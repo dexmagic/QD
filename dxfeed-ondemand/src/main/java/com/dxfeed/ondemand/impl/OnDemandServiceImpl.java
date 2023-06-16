@@ -11,6 +11,8 @@
  */
 package com.dxfeed.ondemand.impl;
 
+import android.app.Notification;
+
 import com.devexperts.qd.QDLog;
 import com.devexperts.qd.qtp.MessageConnector;
 import com.devexperts.qd.qtp.QDEndpoint;
@@ -26,11 +28,8 @@ import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.management.ListenerNotFoundException;
-import javax.management.Notification;
-import javax.management.NotificationListener;
 
-public final class OnDemandServiceImpl extends OnDemandService implements NotificationListener {
+public final class OnDemandServiceImpl extends OnDemandService  {
     // non-null after init, effectively final
     private DXEndpointImpl dxEndpoint;
     private DXFeedImpl dxFeed;
@@ -79,11 +78,6 @@ public final class OnDemandServiceImpl extends OnDemandService implements Notifi
             // figure out new on-demand connector
             OnDemandConnector oldOnDemandConnector = onDemandConnector;
             if (onDemandConnector != null) {
-                try {
-                    onDemandConnector.removeNotificationListener(this);
-                } catch (ListenerNotFoundException e) {
-                    throw new RuntimeException(e); // cannot really happen
-                }
                 onDemandConnector = null;
             }
             for (MessageConnector connector : dxEndpoint.getQDEndpoint().getConnectors()) {
@@ -93,7 +87,6 @@ public final class OnDemandServiceImpl extends OnDemandService implements Notifi
                 }
             }
             if (onDemandConnector != null) {
-                onDemandConnector.addNotificationListener(this, null, null);
                 // respect feed's aggregation period in connector's tick period
                 if (onDemandConnector != oldOnDemandConnector)
                     onDemandConnector.setTickPeriod(TimePeriod.valueOf(Math.max(
@@ -106,12 +99,6 @@ public final class OnDemandServiceImpl extends OnDemandService implements Notifi
         }
     }
 
-    // called when connector's time is updated. It must be lock-free.
-    @Override
-    public void handleNotification(Notification notification, Object handback) {
-        captureOnDemandConnectorTime();
-        change.schedule();
-    }
 
     private void captureOnDemandConnectorTime() {
         OnDemandConnector onDemandConnector = this.onDemandConnector; // atomic read
